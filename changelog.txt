@@ -1,0 +1,25 @@
+1 Apr 2012 v1.0.1
++ The addon is now GPL2
+* Filesystem paths are resolved using getAddonInfo('path') instead of os.getcwd()
+* Added the plugin to the official XBMC repository
+
+
+4 Jan 2012 v1.00
++ Added channelgraphics for 3 new channels
++ Now supports DI Premium - highquality 256k streams
++ DI Premium members can choose between 256k and 128k streams
++ Premium members can use their 'My Favorites' playlist
+* Changed cache expiration from 1 hour to 6 hours
+* Updated so it supports the new sitedesign, introduced new years eve
+* Removed the "Digitally Imported - " substring that had been added to streamnames
+
+
+25 Jul 2011 v0.71
+* Fixed a bug when setting "Stream cache expiration" to 0 - it actually works now
+
+
+23 Jul 2011 v0.7
++ Initial stable release
++ Only supports public streams
++ Sort channels by A-Z or list them in the order they are shown on di.fm
++ Fallback to addon icon, if no channelart found - for when new channels are added

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+	<setting id="sortaz" type="bool" label="30011" default="true" />
+	<setting id="cacheexpire" type="number" label="30012" default="360" />
+	<setting id="forceupdate" type="bool" label="30010" default="false" />
+	<setting type="lsep" label="30002" />
+	<setting id="username" type="text" label="30003" />
+	<setting id="password" type="text" option="hidden" label="30004" />
+	<setting id="usefavorites" type="bool" label="30005" default="false" />
+	<setting id="streamquality" type="enum" label="30013" values="256|128" default="1" />
+	<setting type="lsep" label="Get HQ 256k streams with DI Premium at http://di.fm" />
+	<setting id="version" type="lsep" label="Version:  1.0" />
+	<setting id="author" type="lsep" label="Author:  Tim C. 'Bitcrusher' Steinmetz" />
+	<setting id="website" type="lsep" label="Homepage:  http://qualisoft.dk" />
+</settings> 

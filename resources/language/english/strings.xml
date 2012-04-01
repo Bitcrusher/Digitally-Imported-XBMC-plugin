@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+	<!-- The strings 30000 to 30999 is reserved for plug-in paramters -->
+	<!--GENERAL STRINGS -->
+	<string id="30001">Stream source</string>
+	<string id="30010">Force cache refresh (use when changing settings)</string>
+	<string id="30002">Premium settings</string>
+	<string id="30003">Username</string>
+	<string id="30004">Password</string>
+	<string id="30005">Use 'My favorites' playlist</string>
+	<string id="30013">Stream bitrate</string>
+	<string id="30006">About</string>
+	<string id="30007">Version</string>
+	<string id="30008">Author</string>
+	<string id="30009">Homepage</string>
+	<string id="30011">Sort A-Z (also affects 'My Favorites')</string>
+	<string id="30012">Stream cache expiration in minutes (0 = never)</string>
+</strings>
