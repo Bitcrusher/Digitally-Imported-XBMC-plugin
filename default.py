@@ -2,6 +2,8 @@
 #  Digitally Imported XBMC plugin
 #  by Tim C. 'Bitcrusher' Steinmetz
 #  http://qualisoft.dk
+#  Github: https://github.com/Bitcrusher/Digitally-Imported-XBMC-plugin
+#  Git Read-only: git://github.com/Bitcrusher/Digitally-Imported-XBMC-plugin.git
 #
 #  This Program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -24,7 +26,7 @@ __plugin__       = "Digitally Imported - DI.fm"
 __author__       = "Tim C. Steinmetz"
 __url__          = "http://qualisoft.dk/"
 __platform__     = "xbmc media center, [LINUX, OS X, WIN32]"
-__date__         = "1. April 2012"
+__date__         = "22. April 2012"
 __version__      = "1.1.0"
 
 import os
@@ -40,7 +42,6 @@ import xbmcaddon
 import pickle
 import time
 from xml.dom import minidom
-#from urllib import quote_plus
 from httpcomm import HTTPComm	
 
 # Various vars used throughout the script
