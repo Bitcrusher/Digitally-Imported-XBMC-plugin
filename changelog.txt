@@ -1,10 +1,17 @@
-1 Apr 2012 v1.0.1
+1 Apr 2012 v1.1.0
 + The addon is now GPL2
++ Added AAC+ streams - 1/2 bandwidth for the same quality
++ Channelart will automatically be downloaded - for when new channels are added
++ Notification when new channels are added
++ New channels (when new channelart is found) are highlighted in orange - remains hightlighted till the cache is refreshed
++ Added stats system - results of this will be visible at http://stats.qualisoft.dk
+- Removed MP3 stream support
+* Overhauled the whole plugin, removed lots of duplicate/redundant code = ~150 lines lighter code
 * Filesystem paths are resolved using getAddonInfo('path') instead of os.getcwd()
-* Added the plugin to the official XBMC repository
+* All log output to switched from using the print function to xbmc.log
 
 
-4 Jan 2012 v1.00
+4 Jan 2012 v1.0
 + Added channelgraphics for 3 new channels
 + Now supports DI Premium - highquality 256k streams
 + DI Premium members can choose between 256k and 128k streams
