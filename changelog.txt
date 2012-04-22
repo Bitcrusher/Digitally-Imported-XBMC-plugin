@@ -1,4 +1,4 @@
-1 Apr 2012 v1.1.0
+22 Apr 2012 v1.1.0
 + The addon is now GPL2
 + Added AAC+ streams - 1/2 bandwidth for the same quality
 + Channelart will automatically be downloaded - for when new channels are added
