@@ -81,7 +81,7 @@ class Main:
 		xbmcplugin.endOfDirectory( HANDLE, succeeded=True )
 
 		# If stats is allowed and its been 24 hours since last checkin
-		if (ADDON.getSetting('allowstats') == "true") and (self.checkFileTime(CHECKINFILE, 24 * 60) == True) :
+		if (ADDON.getSetting('allowstats') == "true") and (self.checkFileTime(CHECKINFILE, 86400) == True) :
 			open(CHECKINFILE, "w")
 			
 			account = 'public'
