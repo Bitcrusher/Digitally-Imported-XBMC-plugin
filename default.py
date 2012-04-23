@@ -268,12 +268,17 @@ class Main:
 		
 			if (NEWSTREAMS > 0) : # Yay! New channels found
 				xbmc.log( 'New channels found - There was found ' + str(NEWSTREAMS) + ' new piece(s) of channelart - Meaning there could be new channels', xbmc.LOGNOTICE )
-				xbmcgui.Dialog().ok('New channels found', 'There was found ' + str(NEWSTREAMS) + ' new piece(s) of channelart', 'Meaning there could be new channels','The new channels are highlighted with orange')
+				xbmcgui.Dialog().ok('New channels found', 'There was found ' + str(NEWSTREAMS) + ' new piece(s) of channelart', 'Meaning there could be new channels','The new channels are highlighted in orange')
 				
 			# Resets the 'Force refresh' setting
 			ADDON.setSetting(id="forceupdate", value="false")
 
 		else :
+			if not os.path.isfile(STREAMTITLESCACHE) or not os.path.isfile(STREAMURLSCACHE) or not os.path.isfile(STREAMBITRATECACHE) or not os.path.isfile(STREAMLABELCOLORCACHE) :
+				xbmc.log( 'Cachefiles are missing - At least one of the cachefiles is missing please go to the addon settings and select "Force cache refresh"', xbmc.LOGERROR )
+				xbmcgui.Dialog().ok('Cachefiles are missing', 'At least one of the cachefiles is missing', 'please go to the addon settings and','select "Force cache refresh"')
+				return False
+
 			streamurls     = pickle.load(open(STREAMURLSCACHE, "r"))    # load streams from cache
 			streamtitles   = pickle.load(open(STREAMTITLESCACHE, "r"))  # load streamtitles from cache
 			streambitrate  = pickle.load(open(STREAMBITRATECACHE, "r")) # load stream bitrate from cache
