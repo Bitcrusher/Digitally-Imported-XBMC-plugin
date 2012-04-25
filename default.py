@@ -48,18 +48,18 @@ from httpcomm import HTTPComm
 HANDLE = int(sys.argv[1])
 ADDON = xbmcaddon.Addon(id='plugin.audio.di.fm')
 
-ART_DIR = xbmc.translatePath( os.path.join( ADDON.getAddonInfo('path'), 'resources', 'art', '' ) ) # path to channelart
-sys.path.append (ART_DIR)
-
 BASEURL    = "http://www.di.fm"
 PREMIUMURL = "http://www.di.fm/login"
 
-STREAMURLSCACHE = xbmc.translatePath( os.path.join( ADDON.getAddonInfo('path'), '' ) ) + "cachestream.dat"
-STREAMTITLESCACHE = xbmc.translatePath( os.path.join( ADDON.getAddonInfo('path'), '' ) ) + "cachestreamtitle.dat"
-STREAMBITRATECACHE = xbmc.translatePath( os.path.join( ADDON.getAddonInfo('path'), '' ) ) + "streamrate.dat"
-STREAMLABELCOLORCACHE = xbmc.translatePath( os.path.join( ADDON.getAddonInfo('path'), '' ) ) + "streamisnew.dat"
+PROFILEPATH = xbmc.translatePath( ADDON.getAddonInfo('profile') ).decode('utf-8')
 
-CHECKINFILE = xbmc.translatePath( os.path.join( ADDON.getAddonInfo('path'), '' ) ) + "lastcheckin.dat"
+ART_DIR = os.path.join( PROFILEPATH, 'resources', 'art', '' ) # path to channelart
+
+STREAMURLSCACHE = PROFILEPATH + "cachestream.dat"
+STREAMTITLESCACHE = PROFILEPATH + "cachestreamtitle.dat"
+STREAMBITRATECACHE = PROFILEPATH + "streamrate.dat"
+STREAMLABELCOLORCACHE = PROFILEPATH + "streamisnew.dat"
+CHECKINFILE = PROFILEPATH + "lastcheckin.dat"
 
 NEWSTREAMS = 0
 LABELCOLOR = 'FF0000'
@@ -70,7 +70,7 @@ xbmc.log( "[PLUGIN] %s v%s (%s)" % ( __plugin__, __version__, __date__ ), xbmc.L
 
 # Main class
 class Main:
-	def __init__(self):
+	def __init__(self) :
 		self.getStreams()
 				
 		# If streams should be sorted A-Z
@@ -80,7 +80,7 @@ class Main:
 		# End of list
 		xbmcplugin.endOfDirectory( HANDLE, succeeded=True )
 
-		# If stats is allowed and its been 24 hours since last checkin
+		# If stats is allowed and its been at least 24 hours since last stat checkin
 		if (ADDON.getSetting('allowstats') == "true") and (self.checkFileTime(CHECKINFILE, 86400) == True) :
 			open(CHECKINFILE, "w")
 			
@@ -124,13 +124,13 @@ class Main:
 				try :
 					htmlData     = HTTPCOMM.get( BASEURL )
 				except Exception:
-					xbmcgui.Dialog().ok('Connection error', 'Could not connect to di.fm', 'Check your internet connection')
+					xbmcgui.Dialog().ok( ADDON.getLocalizedString(30100), ADDON.getLocalizedString(30101), ADDON.getLocalizedString(30102) )
 					xbmc.log( 'Connection error - Could not connect to di.fm - Check your internet connection', xbmc.LOGERROR )
 					return False
 
 				# precompiling regexes
 				playlist_re = re.compile('AAC-HE</a>[\s\r\n]*<ul>(?:.+?(?!</ul>))<li><a href="([^"]+(?=(?:\.pls))[^"]+)">40k', re.DOTALL)
-
+				
 				playlists = playlist_re.findall(htmlData)
 				xbmc.log( 'Found ' + str(len(playlists)) + ' streams', xbmc.LOGNOTICE )
 
@@ -138,7 +138,7 @@ class Main:
 				xbmc.log( 'Found ' + str(len(channelicons)) + ' pieces of channelart', xbmc.LOGNOTICE )
 
 				if len(playlists) == 0 :
-					xbmcgui.Dialog().ok('No streams found', 'Maybe your DI Premium membership expired', 'or the plugin has broken (the HTML layout changed)')
+					xbmcgui.Dialog().ok( ADDON.getLocalizedString(30110), ADDON.getLocalizedString(30111), ADDON.getLocalizedString(30112) )
 					return False
 				
 				# output public streams to XBMC
@@ -165,7 +165,7 @@ class Main:
 						streamurls.append(streamurl[0])
 						streamisnew.append(LABELCOLOR)
 					else :
-						xbmcgui.Dialog().ok('Connection timed out', 'Could not get the playlist from this url:', item)
+						xbmcgui.Dialog().ok(ADDON.getLocalizedString(30120), ADDON.getLocalizedString(30111), item)
 						xbmc.log( 'Connection timed out - Could not get the playlist from this url:' + item, xbmc.LOGERROR )
 								
 			# Get premium streams
@@ -185,7 +185,7 @@ class Main:
 				try :
 					htmlData     = HTTPCOMM.post( PREMIUMURL, logindata )
 				except Exception:
-					xbmcgui.Dialog().ok('Connection error', 'Could not connect to di.fm', 'Check your internet connection')
+					xbmcgui.Dialog().ok( ADDON.getLocalizedString(30100), ADDON.getLocalizedString(30101), ADDON.getLocalizedString(30102) )
 					xbmc.log( 'Connection error - Could not connect to di.fm - Check your internet connection', xbmc.LOGERROR )
 					return False
 				
@@ -195,7 +195,7 @@ class Main:
 				playlists = playlist_re.findall(htmlData)
 
 				if len(playlists) == 0 :
-					xbmcgui.Dialog().ok('No streams found', 'Maybe your DI Premium membership expired', 'or the plugin has broken (the HTML layout changed)')
+					xbmcgui.Dialog().ok( ADDON.getLocalizedString(30110), ADDON.getLocalizedString(30111), ADDON.getLocalizedString(30112) )
 					return False
 
 				# output premium streams to XBMC
@@ -225,7 +225,7 @@ class Main:
 							streamurls.append(streamurl[0])
 							streamisnew.append(LABELCOLOR)
 						else :
-							xbmcgui.Dialog().ok('Connection timed out', 'Could not get the playlist from this url:', item)
+							xbmcgui.Dialog().ok(ADDON.getLocalizedString(30120), ADDON.getLocalizedString(30111), item)
 							xbmc.log( 'Connection timed out - Could not get the playlist from this url:' + item, xbmc.LOGERROR )
 
 
@@ -254,7 +254,7 @@ class Main:
 							streamurls.append(favstreamurls[index])
 							streamisnew.append(LABELCOLOR)
 					else :
-						xbmcgui.Dialog().ok('Connection timed out', 'Could not get the playlist from this url:', item)
+						xbmcgui.Dialog().ok( ADDON.getLocalizedString(30120), ADDON.getLocalizedString(30111), item )
 						xbmc.log( 'Connection timed out - Could not get the playlist from this url:' + item, xbmc.LOGERROR )
 
 				xbmc.log( 'Found ' + str(len(playlists)) + ' streams', xbmc.LOGNOTICE )
@@ -268,7 +268,7 @@ class Main:
 		
 			if (NEWSTREAMS > 0) : # Yay! New channels found
 				xbmc.log( 'New channels found - There was found ' + str(NEWSTREAMS) + ' new piece(s) of channelart - Meaning there could be new channels', xbmc.LOGNOTICE )
-				xbmcgui.Dialog().ok('New channels found', 'There was found ' + str(NEWSTREAMS) + ' new piece(s) of channelart', 'Meaning there could be new channels','The new channels are highlighted in orange')
+				xbmcgui.Dialog().ok( ADDON.getLocalizedString(30130), ADDON.getLocalizedString(30131) + str(NEWSTREAMS) + ADDON.getLocalizedString(30132), ADDON.getLocalizedString(30133),ADDON.getLocalizedString(30134) )
 				
 			# Resets the 'Force refresh' setting
 			ADDON.setSetting(id="forceupdate", value="false")
@@ -276,7 +276,7 @@ class Main:
 		else :
 			if not os.path.isfile(STREAMTITLESCACHE) or not os.path.isfile(STREAMURLSCACHE) or not os.path.isfile(STREAMBITRATECACHE) or not os.path.isfile(STREAMLABELCOLORCACHE) :
 				xbmc.log( 'Cachefiles are missing - At least one of the cachefiles is missing please go to the addon settings and select "Force cache refresh"', xbmc.LOGERROR )
-				xbmcgui.Dialog().ok('Cachefiles are missing', 'At least one of the cachefiles is missing', 'please go to the addon settings and','select "Force cache refresh"')
+				xbmcgui.Dialog().ok( ADDON.getLocalizedString(30140), ADDON.getLocalizedString(30141), ADDON.getLocalizedString(30142), ADDON.getLocalizedString(30143) )
 				return False
 
 			streamurls     = pickle.load(open(STREAMURLSCACHE, "r"))    # load streams from cache
@@ -301,7 +301,7 @@ class Main:
 
 			if (NEWSTREAMS < 0) : # Missing channelart dialog
 				xbmc.log( "Channelart missing - There is " + str(abs(NEWSTREAMS)) + " piece(s) of channelart missing - You should refresh your cache - Disable using 'My Favorites' to get new channelart", xbmc.LOGWARNING )
-				xbmcgui.Dialog().ok('Channelart missing', 'There is ' + str(abs(NEWSTREAMS)) + ' piece(s) of channelart missing', 'You should refresh your cache', "Disable using 'My Favorites' to get new channelart")
+				xbmcgui.Dialog().ok( ADDON.getLocalizedString(30150), ADDON.getLocalizedString(30151) + str(abs(NEWSTREAMS)) + ADDON.getLocalizedString(30152), ADDON.getLocalizedString(30153), ADDON.getLocalizedString(30154))
 		
 		return True
 

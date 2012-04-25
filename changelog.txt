@@ -2,9 +2,16 @@
 * Fixed/improved feature
 - Removed feature
 
+
+25 Apr 2012 v1.1.1
+* Changed cache path from using xbmc.getaddoninfo('path') to xbmc.getaddoninfo('profile')
+* Renamed resource/language/english to resource/language/English
+* Localized on-screen strings (used in dialogboxes)
+
+
 22 Apr 2012 v1.1.0
 + The addon is now GPL2
-+ Added AAC+ streams - 1/2 bandwidth for the same quality
++ Added AAC+ streams - 1/2 bandwidth for the same quali
 + Channelart will automatically be downloaded - for when new channels are added
 + Notification when new channels are added
 + New channels (when new channelart is found) are highlighted in orange - remains hightlighted till the cache is refreshed
