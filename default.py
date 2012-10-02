@@ -174,6 +174,8 @@ class musicAddonXbmc:
 		# End of channel list
 		xbmcplugin.endOfDirectory( HANDLE, succeeded=True )
 
+
+
 		# Resets the 'Force refresh' setting
 		ADDON.setSetting( id="forceupdate", value="false" )
 		
@@ -328,11 +330,11 @@ class musicAddonXbmc:
 
 	
 	"""return string
-	Will take a channelname, lowercase it and remove spaces and similar characters
+	Will take a channelname, lowercase it and remove spaces, dashes and other special characters
 	The string returned is normally used as part of the filename for the channelart
 	"""
 	def makeChannelIconname( self, channelname ) :
-		iconreplacement_re = re.compile('[ \'-]', re.I) # generic regex for iconnames		
+		iconreplacement_re = re.compile('[^a-z0-9]', re.I) # regex that hits everything but a-z and 0-9
 		iconname = string.lower(iconreplacement_re.sub( '', channelname) )
 		return iconname
 	
