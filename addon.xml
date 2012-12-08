@@ -11,6 +11,7 @@
 	</extension>
 	<extension point="xbmc.addon.metadata">
 		<platform>all</platform>
+		<language>en</language>
 		<license>GPL 2.0</license>
    		<summary lang="en">Digitally Imported</summary>
 		<description lang="en">
