@@ -2,6 +2,9 @@
 * Fixed/improved feature
 - Removed feature
 
+20 May 2013 v2.1.2
+* Fixed problems related to new Digitally Imported webpage
+
 
 22 December 2012 v2.1.1
 * Made 256k quality selectable from config (duh!)
