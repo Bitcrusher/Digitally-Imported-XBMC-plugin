@@ -4,6 +4,7 @@
 
 20 May 2013 v2.1.2
 * Fixed problems related to new Digitally Imported webpage
+  Thanks to Vidar Waagbø for the regex patch
 
 
 22 December 2012 v2.1.1
