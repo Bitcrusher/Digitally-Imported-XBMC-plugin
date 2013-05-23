@@ -13,6 +13,9 @@
 		<platform>all</platform>
 		<language>en</language>
 		<license>GPL 2.0</license>
+		<forum>http://forum.xbmc.org/showthread.php?tid=129857</forum>
+    		<website>http://www.qualisoft.dk</website>
+		<source>https://github.com/Bitcrusher/Digitally-Imported-XBMC-plugin</source>
    		<summary lang="en">Digitally Imported</summary>
 		<description lang="en">
 			Digitally Imported streams the world's most addictive electronic music. Our radio channels feature world renowned artists, DJs, and the hottest exclusive shows. Discover the community and the wide variety of electronic music covering Trance, House, Dance, Techno, Chillout, Breaks, Downtempo and so much more.
