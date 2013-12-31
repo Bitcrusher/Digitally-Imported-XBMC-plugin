@@ -25,7 +25,6 @@
 
 import os
 import pickle
-from pprint import pprint
 import sys
 import re
 import string
@@ -214,13 +213,12 @@ class musicAddonXbmc:
 
             # starts 8 threads to download streams for each channel
             while not self.workQueue.empty():
-                print("queue size " + str(self.workQueue.qsize()))
+                xbmc.log('Worker queue size is %s' % (str(self.workQueue.qsize())), xbmc.LOGNOTICE)
 
                 if threading.activeCount() < self.threadMax and not self.workQueue.empty():
                     threads.append(scraperThread(self, self.workQueue.get(), channelMeta, len(channels)))
                     threads[-1].start()
                 else:
-                    print("max threads reached - sleeping")
                     time.sleep(0.1)
 
             # wait for all threads to finish before continuing
@@ -274,7 +272,6 @@ class musicAddonXbmc:
             self.getChannelAsset(str(channel['id']), channelMeta[str(channel['id'])]['asset_url'])
 
         if ADDON.getSetting('randomstream') == "true":
-            pprint(channel['playlist'] + self.listenKey)
             playlist = self.curler.request(channel['playlist'] + self.listenKey, 'get')
 
             playlistStreams = self.re_playlistStreams.findall(playlist)
