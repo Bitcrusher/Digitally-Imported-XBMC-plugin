@@ -135,6 +135,7 @@ class musicAddonXbmc:
 
         # check if cache has expired
         if not ADDON.getSetting("forceupdate") == "true"\
+            and not int(ADDON.getSetting("cacheexpire_days")) == 0\
             and self.checkFileTime(pluginConfig.get('cache', 'cacheChannels'),
                                    ADDON.getSetting("cacheexpire_days")):
             ADDON.setSetting(id="forceupdate", value="true")
