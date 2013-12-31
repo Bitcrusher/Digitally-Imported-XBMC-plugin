@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <strings>
-	<!-- The strings 30000 to 30999 is reserved for plug-in paramters -->
+	<!-- The strings 30000 to 30999 is reserved for plug-in parameters -->
 	<!--GENERAL STRINGS -->
 
 	<string id="30014">General</string>
@@ -46,7 +46,7 @@
     <string id="30103">and the website in your browser</string>
 
 	<string id="30110">No streams found</string>
-	<string id="30111">Maybe your DI Premium membership expired</string>
+	<string id="30111">Maybe your DI Premium membership expired?</string>
 	<string id="30112">or the plugin has broken (the HTML layout changed)</string>
 
 	<string id="30120">Connection timed out</string>
