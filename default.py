@@ -400,11 +400,11 @@ class musicAddonXbmc:
     def checkFileTime(self, filename, days):
         if not os.path.exists(self.addonProfilePath):
             os.makedirs(self.addonProfilePath)
-            return False
+            return True
 
         daysInSecs = int(days)*60*60*24
 
-        file = "%s%s" % (self.addonProfilePath, filename)
+        file = os.path.join(self.addonProfilePath, filename)
 
         # If file exists, check timestamp
         if os.path.exists(file):
