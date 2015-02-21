@@ -4,7 +4,7 @@
 
 
 21. February 2015 v3.0.8
-* Regex getting channel metadata from HTML
+* Updated regex getting channel metadata from HTML
 
 
 15. February 2015 v3.0.7
