@@ -2,6 +2,9 @@
 * Fixed/improved feature
 - Removed feature
 
+22. January 2016 v3.1.0.1
+* Fixed Streams for non premium
+
 
 25. March 2015 v3.1.0
 + Got a baby daughter - Ella :D
