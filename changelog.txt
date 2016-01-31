@@ -2,8 +2,11 @@
 * Fixed/improved feature
 - Removed feature
 
-22. January 2016 v3.1.0.1
-* Fixed Streams for non premium
+30. January 2016 v3.1.1
++ Added option that enables/disables the use of Premium account credentials
++ Added hebrew translation - thank you to smoky-jr
+* Fixed free streams - thank you to Christian Gerbrandt (derchrisuk)
+
 
 
 25. March 2015 v3.1.0
