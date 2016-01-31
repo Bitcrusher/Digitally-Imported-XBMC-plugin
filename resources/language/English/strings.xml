@@ -13,7 +13,7 @@
 	<string id="30001">Stream source</string>
 
   <string id="30183">Login</string>
-	<string id="30002">Premium</string>
+	<string id="30002">Use premium streams</string>
 	<string id="30003">E-mail/username</string>
 	<string id="30004">Password</string>
 	<string id="30005">Use 'My favorites' playlist</string>
@@ -25,7 +25,7 @@
 	<string id="30009">Homepage</string>
 
 	<string id="30015">Get HQ 320k streams with DI Premium at http://www.di.fm</string>
-	<string id="30016">Version:  3.1.0</string>
+	<string id="30016">Version:  3.1.1</string>
 	<string id="30017">Author:  Tim C. 'Bitcrusher' Steinmetz</string>
 	<string id="30018">Homepage:  http://qualisoft.dk</string>
 	<string id="30019">E-mail:  timcst@gmail.com</string>
