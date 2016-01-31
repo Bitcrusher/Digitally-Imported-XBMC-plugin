@@ -1,7 +1,7 @@
 ﻿#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 ########################################
-#  Digitally Imported XBMC plugin
+#  Digitally Imported Kodi plugin
 #  by Tim C. 'Bitcrusher' Steinmetz
 #  http://qualisoft.dk
 #  Github: https://github.com/Bitcrusher/Digitally-Imported-XBMC-plugin
@@ -144,7 +144,7 @@ class musicAddonXbmc:
             html = ""
 
             # if username is set, try to login and go for premium channels
-            if ADDON.getSetting('username') != "" and ADDON.getSetting('ispremium') == "true":
+            if ADDON.getSetting('username') != "" and ADDON.getSetting('usepremium') == "true":
                 loginData = urllib.urlencode({'member_session[username]': ADDON.getSetting('username'),
                                               'member_session[password]': ADDON.getSetting('password')})
 
@@ -217,7 +217,7 @@ class musicAddonXbmc:
 
                 # add listenkey to playlist urls
                 for channel in channels:
-                    channel['playlist'] = '%s?%s' % (channel['playlist'], premiumConfig['listenKey'] )
+                    channel['playlist'] = '%s' % (channel['playlist'])
 
             for channel in channels:
                 self.workQueue.put(channel)
